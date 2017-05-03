@@ -24,7 +24,7 @@ from snippets import views as snippetsviews
 router = routers.DefaultRouter()
 router.register(r'users', quickstartviews.UserViewSet)
 router.register(r'groups', quickstartviews.GroupViewSet)
-#router.register(r'snippet',snippetsviews.snippet_list)
+router.register(r'snippet', snippetsviews.SnippetHighlight)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),
