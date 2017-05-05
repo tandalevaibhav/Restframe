@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from quickstart.serializers import UserSerializer, GroupSerializer
-
+from rest_framework import permissions
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -13,9 +13,10 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class GroupViewSet(viewsets.ModelViewSet):
+class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
+    #permission_classes=(permissions.IsAuthenticatedOrReadOnly)
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
